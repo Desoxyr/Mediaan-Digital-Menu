@@ -1,0 +1,100 @@
+.card-wrapper
+  min-width: 245px !important
+  max-width: 245px !important
+  border-radius: 8px !important
+  margin-bottom: 30px !important
+  border: 1px solid #cbcbcb !important
+  border-spacing: 0 !important
+
+  #card-header
+    background-color: #fbc379
+    min-height: 80px
+    border-top-right-radius: 7px
+    border-top-left-radius: 7px
+    border-spacing: 0 !important
+
+  #card-body
+    width: 100%
+    overflow-x: hidden
+    overflow-y: auto
+    height: 250px
+    box-sizing: content-box
+
+  ::-webkit-scrollbar
+    width: 15px
+
+  ::-webkit-scrollbar-thumb
+    background-color: #d6dee1
+    border-radius: 8px
+    border: 5px solid transparent
+    background-clip: content-box
+
+  #card-footer
+    margin-top: auto
+    margin-bottom: 0
+
+  .dish-line
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    padding-bottom: 10px
+    padding-top: 10px
+    padding-right: 5px
+
+    border-bottom: 1px solid #cbcbcb
+    min-height: 50px
+    font-weight: normal
+
+  .dish-line-content
+    display: flex
+    flex-direction: row
+
+  .dish-line-amount
+    width: 2.5em
+    display: flex
+    justify-content: center
+    font-weight: 650
+
+  .dish-line-name
+    font-weight: 500
+
+  .status-bar
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+
+  #list-id
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    background-color: #444444
+    color: #eeeeee
+    min-width: 35px
+    border-radius: 5px
+    text-align: center
+
+  #status
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    padding-left: 20px
+    font-weight: bold
+    color: #444444
+
+  #time
+    margin-left: auto
+    margin-right: 0
+
+  #status-button
+    float: right
+    background-color: #444444
+    color: #eeeeee
+    width: 4em !important
+    height: 2.4em
+    border-radius: 5px !important
+    border: none
+    &:hover
+      background-color: #2d2d2d
