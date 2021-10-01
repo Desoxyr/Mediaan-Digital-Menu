@@ -13,4 +13,4 @@ We decided to split the app into three portals: the [Menu](https://github.com/De
 
 ## Documentation
 
-If you're interested in checking out more of the documentation of the project I highly recommend you check out the [Analysis] and the [Architecture & Technical Choices].
+If you're interested in checking out more of the documentation of the project I highly recommend you check out the [Analysis](https://github.com/Desoxyr/Mediaan-Digital-Menu/blob/master/Analysis.md) and the [Architecture & Technical Choices](https://github.com/Desoxyr/Mediaan-Digital-Menu/blob/master/Architecture%20%26%20Technical%20Choices.md).
