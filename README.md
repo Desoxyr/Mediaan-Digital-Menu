@@ -1,7 +1,7 @@
 # Introduction
 The process in a restaurant is usually the same. Customers get seated, are handed the menu, make an order, consume their food and pay the bill. The idea if to convert the above process to a more automated experience. As part of a group project I developed a proof of concept of concept of what this might look like. 
 
-[Gif of ordering food here]
+![](https://i.imgur.com/bNulF0D.gif)
 
 Customers will be able to scan a QR Code which will open a menu and link their device to their table. They're able to browse the menu and select their desired items. Once an order has been made it shows up in the kitchen. Ingredients are automatically subtracted from the stock, which can be manually adjusted when necessary. 
 What would the new preferred situation look like?
