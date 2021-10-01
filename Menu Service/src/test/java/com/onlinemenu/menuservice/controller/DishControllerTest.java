@@ -1,6 +1,9 @@
 package com.onlinemenu.menuservice.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.onlinemenu.menuservice.VO.DishVO;
+import com.onlinemenu.menuservice.VO.Ingredient;
 import com.onlinemenu.menuservice.entity.Dish;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -105,7 +109,7 @@ public class DishControllerTest {
     @Test
     void shouldSaveDish() throws Exception {
 
-        Dish dishToPost = new Dish(1L,1L,"Spek",5.00,"Een stuk spek","https://fontys.nl/upload/50716580-70d3-4c39-86dd-4237e0166f38_image6483968316988970112.png");
+        DishVO dishToPost = new DishVO(1L,1L,"Spek",5.00,"Een stuk spek","https://fontys.nl/upload/50716580-70d3-4c39-86dd-4237e0166f38_image6483968316988970112.png", new ArrayList<Ingredient>());
 
         String dishAsString = mapper.writeValueAsString(dishToPost);
 
@@ -181,5 +185,32 @@ public class DishControllerTest {
                 .andExpect(jsonPath("$[1].price").value(5.00))
                 .andExpect(jsonPath("$[1].description").value("Een stuk kip"))
                 .andExpect(jsonPath("$[1].imageUrl").value("https://fontys.nl/upload/50716580-70d3-4c39-86dd-4237e0166f38_image6483968316988970112.png"));
+    }
+
+    @Test
+    void findDishesWithIngredients() throws Exception {
+
+        List<Long> dishIds = new ArrayList<>();
+        dishIds.add(1L);
+        dishIds.add(2L);
+
+        String dishIdsAsString = mapper.writeValueAsString(dishIds);
+
+        mvc.perform(post("/menu/dishes/dishes-with-ingredients")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(dishIdsAsString)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].dishId").value(1L))
+                .andExpect(jsonPath("$[0].categoryId").value(1L))
+                .andExpect(jsonPath("$[0].name").value("Biefstuk"))
+                .andExpect(jsonPath("$[0].price").value(7.00))
+                .andExpect(jsonPath("$[0].description").value("Een stuk biefstuk"))
+                .andExpect(jsonPath("$[0].ingredients[0].ingredientId").value(1000))
+                .andExpect(jsonPath("$[0].ingredients[0].amount").value(10))
+                .andExpect(jsonPath("$[0].ingredients[1].ingredientId").value(1001))
+                .andExpect(jsonPath("$[0].ingredients[1].amount").value(5))
+                .andExpect(jsonPath("$[1].ingredients[0].ingredientId").value(1002))
+                .andExpect(jsonPath("$[1].ingredients[0].amount").value(20));
     }
 }

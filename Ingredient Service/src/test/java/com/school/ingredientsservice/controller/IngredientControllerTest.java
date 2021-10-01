@@ -15,13 +15,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.transaction.Transactional;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
@@ -122,4 +123,20 @@ class IngredientControllerTest {
                 .andExpect(jsonPath("$.[2].amount").value(50));
 
     }
+
+    @Test
+    void updateIngredient() throws Exception {
+        Ingredient ingredient = new Ingredient(1L, 20, "Banaan");
+        String IngredientAsString = mapper.writeValueAsString(ingredient);
+
+        mvc.perform(put("/ingredient/update/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(IngredientAsString)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.ingredientId").value(1L))
+                .andExpect(jsonPath("$.amount").value(20))
+                .andExpect(jsonPath("$.name").value("Banaan"));
+    }
+
 }

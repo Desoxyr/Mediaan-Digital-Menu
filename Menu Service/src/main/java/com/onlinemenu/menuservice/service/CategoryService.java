@@ -15,6 +15,7 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
     public List<Category> saveCategories(List<Category> categories){
         return categoryRepository.saveAll(categories);
     }

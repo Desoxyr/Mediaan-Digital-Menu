@@ -23,6 +23,10 @@ spring:
           uri: lb://STOCK-SERVICE
           predicates:
             - Path=/stock/**
+        - id: TABLE-SERVICE
+          uri: lb://TABLE-SERVICE
+          predicates:
+            - Path=/table/**
       globalcors:
         corsConfigurations:
           '[/**]':

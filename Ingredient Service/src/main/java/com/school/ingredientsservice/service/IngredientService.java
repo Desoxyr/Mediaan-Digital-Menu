@@ -7,10 +7,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
+
+    private static List<Ingredient> list = new ArrayList<>();
 
     @Autowired
     private IngredientRepository ingredientRepository;
@@ -36,6 +40,15 @@ public class IngredientService {
 
     public Ingredient findIngredientById(Long ingredientId) {
         return ingredientRepository.findByIngredientId(ingredientId);
+    }
+
+    //update the stock
+    public Ingredient updateIngredient(Ingredient ingredient, Long ingredientId) {
+        findIngredientById(ingredientId);
+
+        ingredient.setAmount(ingredient.getAmount());
+        final Ingredient updateIngredient = ingredientRepository.save(ingredient);
+        return updateIngredient;
     }
 
     public void subtractStock(List<Ingredient> ingredients) {

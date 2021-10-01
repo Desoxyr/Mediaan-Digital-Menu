@@ -5,8 +5,10 @@ import com.onlinemenu.menuservice.entity.Dish;
 import com.onlinemenu.menuservice.repository.CategoryRepository;
 import com.onlinemenu.menuservice.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +25,12 @@ public class DishService {
         return dishRepository.findAll();
     }
 
-    public List<Dish> getAllDishesInShoppingCart(List<Long> dishIds) {
-        return dishRepository.findAllById(dishIds);
+    public List<Dish> getAllDishes(List<Long> dishIds) {
+        List<Dish> dishes = new ArrayList<>();
+        for (var dishId : dishIds) {
+            dishRepository.findByDishId(dishId).ifPresent(dishes::add);
+        }
+        return dishes;
     }
 
     public Dish saveDish(Dish dish) {
@@ -41,10 +47,6 @@ public class DishService {
 
     public Dish updateDish(Dish dish) {
         return dishRepository.save(dish);
-    }
-
-    public List<Dish> findDishesByCategoryId(Long categoryId) {
-        return dishRepository.findByCategoryId(categoryId);
     }
 
     public List<Dish> findDishesByCategoryName(String name) {

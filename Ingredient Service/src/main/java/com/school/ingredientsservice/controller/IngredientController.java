@@ -29,6 +29,13 @@ public class IngredientController {
         return ingredientService.saveIngredient(ingredient);
     }
 
+
+    @PutMapping("/update/{id}")
+    public Ingredient updateIngredient(@RequestBody Ingredient ingredient, @PathVariable Long id) {
+        return ingredientService.updateIngredient(ingredient, id);
+    }
+
+
     @DeleteMapping("/delete/{id}")
     public void deleteIngredientById(@PathVariable("id") Long ingredientId) {
         ingredientService.deleteIngredientById(ingredientId);

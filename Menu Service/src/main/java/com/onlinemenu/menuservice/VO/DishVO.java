@@ -1,28 +1,22 @@
-package com.onlinemenu.menuservice.entity;
+package com.onlinemenu.menuservice.VO;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.util.List;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dish {
+public class DishVO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long dishId;
-
     private Long categoryId;
     private String name;
     private double price;
-
-    @Column(length=2000)
     private String description;
-
-    @Column(length=2000)
     private String imageUrl;
+    private List<Ingredient> ingredients;
 }
