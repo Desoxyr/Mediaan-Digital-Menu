@@ -9,7 +9,7 @@ What would the new preferred situation look like?
 The application is meant to lighten the workload of the staff which will in turn make it possible to speed up the ordering process. It will also be a lot easier to make changes to the menu and keep track of the stock, which is a great benefit for kitchen. 
 
 ## Implementation
-We decided to split the app into three portals: the [Menu](https://github.com/Desoxyr/Mediaan-Digital-Menu/tree/master/Menu%20Service), the [Kitchen](https://github.com/Desoxyr/Mediaan-Digital-Menu/tree/master/Kitchen%20View) and the [Management](https://github.com/Desoxyr/Mediaan-Digital-Menu/tree/master/Management%20View). This allowed us to split the responsibility of each portal without having to focus on security and role management.
+We decided to split the app into three portals: the [Menu](https://github.com/milankoster/Mediaan-Digital-Menu/tree/master/Menu%20View), the [Kitchen](https://github.com/Desoxyr/Mediaan-Digital-Menu/tree/master/Kitchen%20View) and the [Management](https://github.com/Desoxyr/Mediaan-Digital-Menu/tree/master/Management%20View). This allowed us to split the responsibility of each portal without having to focus on security and role management.
 
 ## Documentation
 
